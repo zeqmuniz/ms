@@ -19,4 +19,10 @@ Route::get('/mostrar-cliente', [ClienteController::class, 'mostrar'])->name('cli
 //rota para salvar dados no banco
 Route::post('/store-cliente', [ClienteController::class, 'store'])->name('cliente.store');
 
+//Visualizar registro pelo id
+Route::get('/editar-cliente/{cliente}', [ClienteController::class, 'editar'])->name('cliente.editar');
+
+//Atualizar o registro no banco
+Route::put('/update-cliente/{cliente}', [ClienteController::class, 'update'])->name('cliente.update');
+
 

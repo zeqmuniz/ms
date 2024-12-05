@@ -40,4 +40,18 @@ class ClienteController extends Controller
         return redirect()->route('cliente.mostrar')->with('sucesso', 'Cliente Cadastrado com sucesso!');
 
     }
+
+    //Visualizar o registro selecionado
+    public function editar(cliente $cliente)
+    {
+        return view('cliente/editar', ['cliente' => $cliente]);
+
+    }
+
+    //Alterar o registro selecionado
+    public function update()
+    {
+        dd('atualizar');
+
+    }
 }
