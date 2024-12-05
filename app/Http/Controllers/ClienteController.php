@@ -11,7 +11,9 @@ class ClienteController extends Controller
     //listagem de clientes
     public function index()
     {
-        return view('cliente/index');
+        $cliente = Cliente::orderBy('nome')->get();
+
+        return view('cliente/index', ['cliente' => $cliente]);
     }
 
     //formulário para cadastrar novo cliente
