@@ -82,7 +82,7 @@
 
       <div class="col-md-12 col-lg-12">
 
-        <form class="needs-validation" novalidate action="{{ route('cliente.update') }}" method="POST">
+        <form class="needs-validation" novalidate action="{{ route('cliente.update',['cliente' => $cliente->id]) }}" method="POST">
         @csrf
         @method('PUT')
           <div class="row g-3">

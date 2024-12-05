@@ -342,9 +342,13 @@
         </div>
       </div>
 
+      @if (session('sucesso'))
+      <div class="alert alert-success">
+          {{ session('sucesso') }}
+      </div>
 
-
-      <h2>Lista de Clientes</h2>
+      @endif
+      
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
           <thead>

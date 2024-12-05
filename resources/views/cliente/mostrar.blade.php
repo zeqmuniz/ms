@@ -22,12 +22,7 @@
         <div class="container">
             <h1>Resultado do Formulario</h1>
 
-            @if (session('sucesso'))
-            <div class="alert alert-success">
-                {{ session('sucesso') }}
-            </div>
-
-            @endif
+           
 
             <a href="{{ route('cliente.index') }}" class="btn btn-primary">Voltar</a>
 

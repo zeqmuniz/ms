@@ -37,7 +37,7 @@ class ClienteController extends Controller
         Cliente::create($request->all());
 
         //redirecionamento
-        return redirect()->route('cliente.mostrar')->with('sucesso', 'Cliente Cadastrado com sucesso!');
+        return redirect()->route('cliente.index')->with('sucesso', 'Cliente Cadastrado com sucesso!');
 
     }
 
@@ -49,9 +49,23 @@ class ClienteController extends Controller
     }
 
     //Alterar o registro selecionado
-    public function update()
+    public function update(ClienteRequest $request, cliente $cliente)
     {
-        dd('atualizar');
+        //Validar os Campos
+        $request->validated();
+
+        //Atualizar dados do registro no banco
+        $cliente->update([
+            'nome' => $request->nome,
+            'cpf' => $request->cpf,
+            'email' => $request->email,
+            'fone' => $request->fone,
+            'nascimento' => $request->nascimento,
+
+        ]);
+
+        //redirecionamento
+        return redirect()->route('cliente.index')->with('sucesso', 'Cliente Atualizado com sucesso!');
 
     }
 }
