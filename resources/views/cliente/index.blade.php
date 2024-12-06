@@ -348,7 +348,7 @@
       </div>
 
       @endif
-      
+
       <div class="table-responsive small">
         <table class="table table-striped table-sm">
           <thead>
@@ -371,7 +371,14 @@
                 <td>{{ $clienteSite->fone }}</td>
                 <td>{{ $clienteSite->email  }}</td>
                 <td><a href="{{ route('cliente.editar', ['cliente' => $clienteSite->id ]) }}" class="btn btn-primary">Editar</a></td>
-                <td><a href="" class="btn btn-danger">Excluir</a></td>
+                <td>
+                    <form action="{{ ROUTE('cliente.delete', ['cliente' => $clienteSite->id]) }}" method="post">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-danger">Excluir</button>
+                    </form>
+
+                </td>
               </tr>
             @empty
             <tr><td>Nenhum Cadastro</td></tr>

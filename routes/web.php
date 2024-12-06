@@ -25,4 +25,7 @@ Route::get('/editar-cliente/{cliente}', [ClienteController::class, 'editar'])->n
 //Atualizar o registro no banco
 Route::put('/update-cliente/{cliente}', [ClienteController::class, 'update'])->name('cliente.update');
 
+//Excluir registro selecionado
+Route::delete('/delete-cliente/{cliente}', [ClienteController::class, 'delete'])->name('cliente.delete');
+
 
