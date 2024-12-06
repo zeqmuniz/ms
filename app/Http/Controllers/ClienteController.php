@@ -9,12 +9,19 @@ use Illuminate\Http\Request;
 class ClienteController extends Controller
 {
     //listagem de clientes
-    public function index()
+    public function index(Request $request)
     {
-        $cliente = Cliente::orderBy('nome')->get();
+        //Busca registro por pesquisa
+        $termoDePesquisa = $request->input('pesquisa');
+        //Buscar registros no Banco
+        $cliente = Cliente::where('nome', 'like', '%' . $termoDePesquisa . '%')
+        ->orWhere('cpf', 'like', '%' . $termoDePesquisa . '%')
+        ->orWhere('email', 'like', '%' . $termoDePesquisa . '%')
+        ->orderBy('nome')->get();
 
         return view('cliente/index', ['cliente' => $cliente]);
     }
+
 
     //formulário para cadastrar novo cliente
     public function criar()
