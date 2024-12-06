@@ -17,7 +17,7 @@ class ClienteController extends Controller
         $cliente = Cliente::where('nome', 'like', '%' . $termoDePesquisa . '%')
         ->orWhere('cpf', 'like', '%' . $termoDePesquisa . '%')
         ->orWhere('email', 'like', '%' . $termoDePesquisa . '%')
-        ->orderBy('nome')->get();
+        ->orderBy('nome')->paginate(5)->withQueryString();
 
         return view('cliente/index', ['cliente' => $cliente]);
     }
